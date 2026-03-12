@@ -1,7 +1,6 @@
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
 import Stack from "@mui/material/Stack";
 
 const tabs: { label: string; path: string }[] = [
@@ -17,17 +16,16 @@ const tabs: { label: string; path: string }[] = [
 
 export function Header() {
   const location = useLocation();
-  const [value, setValue] = useState(
-    tabs.findIndex((tab) => tab.path === location.pathname)
-  );
+  const currentTab = tabs.some((tab) => tab.path === location.pathname)
+    ? location.pathname
+    : false;
 
   return (
     <Stack direction="row" justifyContent="end">
       <Tabs
-        value={value}
+        value={currentTab}
         centered
         aria-label="header"
-        onChange={(_, value) => setValue(value)}
         TabIndicatorProps={{
           children: <span className="MuiTabs-indicatorSpan" />,
         }}
@@ -46,7 +44,9 @@ export function Header() {
       >
         {tabs.map((tab) => (
           <Tab
+            key={tab.path}
             label={tab.label}
+            value={tab.path}
             component={Link}
             to={tab.path}
             sx={{

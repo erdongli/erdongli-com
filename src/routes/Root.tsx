@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
 import { Header } from "components";
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 
 export function Root(): JSX.Element {
   return (

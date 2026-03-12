@@ -4,7 +4,6 @@ import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
 export function ErrorPage() {
   const error = useRouteError();
-  console.log(error);
 
   return (
     <Box
@@ -20,7 +19,9 @@ export function ErrorPage() {
         <Typography component="i">
           {isRouteErrorResponse(error)
             ? error.statusText
-            : "Something Went Wrong"}
+            : error instanceof Error
+            ? error.message
+            : "Something went wrong."}
         </Typography>
       </Stack>
     </Box>

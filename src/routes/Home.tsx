@@ -35,10 +35,17 @@ export function Home(): JSX.Element {
             <IconButton
               component="a"
               href="https://www.linkedin.com/in/erdong-li-3063527b"
+              target="_blank"
+              rel="noreferrer"
             >
               <LinkedInIcon />
             </IconButton>
-            <IconButton component="a" href="https://github.com/erdongli">
+            <IconButton
+              component="a"
+              href="https://github.com/erdongli"
+              target="_blank"
+              rel="noreferrer"
+            >
               <GitHubIcon />
             </IconButton>
           </Stack>
